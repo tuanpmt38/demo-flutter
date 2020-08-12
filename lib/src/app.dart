@@ -15,6 +15,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+  int count = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,6 +41,6 @@ class _HomePageState extends State<HomePage> {
     );
   }
   void click(){
-
+    count +=1;
   }
 }
