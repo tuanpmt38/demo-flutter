@@ -1,10 +1,6 @@
+import 'package:demo_hello_word/src/app.dart';
 import 'package:flutter/material.dart';
-import 'package:demo_hello_word/MyApp.dart';
 
-void main(){
-  runApp(
-    MyApp()
-  );
+void main() {
+  runApp(MyApp());
 }
-
-
