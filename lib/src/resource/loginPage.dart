@@ -56,21 +56,40 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
               ),
-              TextField(
-                obscureText: true,
-                style: TextStyle(fontSize: 18, color: Colors.black),
-                decoration: InputDecoration(
-                  labelText: "Password",
-                  prefixIcon: Container(
-                    width: 50,
-                    child: Image.asset('ic_lock.png'),
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(6)),
-                    borderSide: BorderSide(width: 1, color: Colors.grey)
-                  ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                child: Stack(
+                  alignment: AlignmentDirectional.centerEnd,
+                  children: <Widget>[
+                    TextField(
+                      obscureText: _showPass,
+                      style: TextStyle(fontSize: 18, color: Colors.black),
+                      decoration: InputDecoration(
+                        labelText: "Password",
+                        prefixIcon: Container(
+                          width: 50,
+                          child: Image.asset('ic_lock.png'),
+                        ),
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(6)),
+                            borderSide: BorderSide(width: 1, color: Colors.grey)
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+                      child: GestureDetector(
+                        onTap: onToggleShowPass,
+                        child: Icon(
+                          _showPass ? Icons.visibility_off : Icons.visibility,
+                          color: Colors.grey,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
+
               Container(
                 constraints: BoxConstraints.loose(Size(double.infinity, 40)),
                 //alignment can le phai
