@@ -27,7 +27,7 @@ class _HomePageState extends State<HomePage> {
         constraints: BoxConstraints.expand(),
         child: Center(
           child: Text(
-            "0",
+            count.toString(),
             style: TextStyle(fontSize: 30, color: Colors.black),
           ),
         ),
@@ -41,6 +41,9 @@ class _HomePageState extends State<HomePage> {
     );
   }
   void click(){
-    count +=1;
+    setState(() {
+      count +=1;
+    });
+
   }
 }
