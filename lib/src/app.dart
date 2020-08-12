@@ -1,3 +1,4 @@
+import 'package:demo_hello_word/src/blocs/stream_bloc.dart';
 import 'package:flutter/material.dart';
 
 class MyApp extends StatelessWidget {
@@ -15,8 +16,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  InProcessData inProcessData = new InProcessData();
 
-  int count = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,24 +27,19 @@ class _HomePageState extends State<HomePage> {
       body: Container(
         constraints: BoxConstraints.expand(),
         child: Center(
-          child: Text(
-            count.toString(),
-            style: TextStyle(fontSize: 30, color: Colors.black),
-          ),
+          child: StreamBuilder(
+            stream: inProcessData.dataStream,
+              builder: (context, snapshot) => Text(
+                  snapshot.hasData? snapshot.data.toString() : "0",
+                  style: TextStyle(fontSize: 20, color: Colors.black))),
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          click();
+          inProcessData.click();
         },
         child: Icon(Icons.add),
       ),
     );
-  }
-  void click(){
-    setState(() {
-      count +=1;
-    });
-
   }
 }
