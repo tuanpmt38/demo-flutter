@@ -12,10 +12,10 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
 
   //khoi tao stream (co nhieu cach de khoi tao)
-  LoginBloc bloc = new LoginBloc();
-  bool _showPass = false;
-  TextEditingController _userController = new TextEditingController();
-  TextEditingController _passController = new TextEditingController();
+  LoginBloc loginBloc = new LoginBloc();
+  bool _showPass = true;
+  TextEditingController _usernameController = new TextEditingController();
+  TextEditingController _passwordController = new TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -41,38 +41,50 @@ class _LoginPageState extends State<LoginPage> {
               color: Colors.grey),),
               Padding(
                 padding: const EdgeInsets.fromLTRB(0,100,0,20),
-                child: TextField(
-                  style: TextStyle(fontSize: 18, color: Colors.black),
-                  decoration: InputDecoration(
-                    labelText: "Email",
-                    prefixIcon: Container(
-                      width: 50,
-                      child: Image.asset('ic_mail.png'),
-                    ),
-                    border: OutlineInputBorder(
-                      borderSide: BorderSide(width: 1, color: Colors.grey),
-                      borderRadius: BorderRadius.all(Radius.circular(6))
+                child:
+                StreamBuilder(
+                  stream: loginBloc.usernameStream,
+                  builder: (context, snapshot) =>TextField(
+                    controller: _usernameController,
+                    style: TextStyle(fontSize: 18, color: Colors.black),
+                    decoration: InputDecoration(
+                      errorText: snapshot.hasError ? snapshot.error : null,
+                      labelText: "Username",
+                      prefixIcon: Container(
+                        width: 50,
+                        child: Image.asset('ic_mail.png'),
+                      ),
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide(width: 1, color: Colors.grey),
+                          borderRadius: BorderRadius.all(Radius.circular(6))
+                      ),
                     ),
                   ),
-                ),
+                )
+                ,
               ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                 child: Stack(
                   alignment: AlignmentDirectional.centerEnd,
                   children: <Widget>[
-                    TextField(
-                      obscureText: _showPass,
-                      style: TextStyle(fontSize: 18, color: Colors.black),
-                      decoration: InputDecoration(
-                        labelText: "Password",
-                        prefixIcon: Container(
-                          width: 50,
-                          child: Image.asset('ic_lock.png'),
-                        ),
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(6)),
-                            borderSide: BorderSide(width: 1, color: Colors.grey)
+                    StreamBuilder(
+                      stream: loginBloc.passwordStream,
+                      builder: (context, snapshot) => TextField(
+                        controller: _passwordController,
+                        obscureText: _showPass,
+                        style: TextStyle(fontSize: 18, color: Colors.black),
+                        decoration: InputDecoration(
+                          errorText: snapshot.hasError ? snapshot.error : null,
+                          labelText: "Password",
+                          prefixIcon: Container(
+                            width: 50,
+                            child: Image.asset('ic_lock.png'),
+                          ),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.all(Radius.circular(6)),
+                              borderSide: BorderSide(width: 1, color: Colors.grey)
+                          ),
                         ),
                       ),
                     ),
@@ -143,7 +155,12 @@ class _LoginPageState extends State<LoginPage> {
 
   //event click button login
   void _onLoginClick() {
-    Navigator.push(context, MaterialPageRoute(builder: (context)=> HomePage()));
+    setState(() {
+      if(loginBloc.isValidInfo(_usernameController.text, _passwordController.text)){
+        Navigator.push(context, MaterialPageRoute(builder: (context)=> HomePage()));
+      }
+    });
+
   }
 
   //redirect sang page register khi login thanh cong

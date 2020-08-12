@@ -9,7 +9,7 @@ class RegisterPage extends StatefulWidget{
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-  bool _showPass = false;
+  bool _showPass = true;
   TextEditingController _userController = new TextEditingController();
   TextEditingController _passController = new TextEditingController();
 
