@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:demo_hello_word/src/validators/validation.dart';
 
 class LoginBloc {
+
+  //single-stream
   StreamController _userController = new StreamController();
   StreamController _passwordController = new StreamController();
 
