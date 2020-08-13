@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "700894484589",
+    "firebase_url": "https://app-taxi-bcd6c.firebaseio.com",
+    "project_id": "app-taxi-bcd6c",
+    "storage_bucket": "app-taxi-bcd6c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:700894484589:android:ddf67a20832750d98c0764",
+        "android_client_info": {
+          "package_name": "com.example.demo_hello_word"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "700894484589-k4sg60qbsf15n6bcnti9lt5net65tbuc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5FE-SzjNvRSuEb8RLIkTKLr9zKT1BXfM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "700894484589-k4sg60qbsf15n6bcnti9lt5net65tbuc.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "700894484589-gic25fopslppkkjelmfsc8l3vupauogn.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.demoHelloWord"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
